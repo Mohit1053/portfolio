@@ -30,7 +30,7 @@ export function About() {
               {pillars.map((pil) => (
                 <div key={pil.title} className="glass glass-hover rounded-2xl p-4">
                   <pil.icon className="h-5 w-5 text-brand" />
-                  <p className="mt-3 font-display text-base font-semibold text-white">{pil.title}</p>
+                  <p className="mt-3 font-display text-base font-semibold text-heading">{pil.title}</p>
                   <p className="mt-1 text-[13px] leading-snug text-muted">{pil.desc}</p>
                 </div>
               ))}

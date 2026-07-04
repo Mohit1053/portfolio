@@ -22,16 +22,16 @@ export function Background() {
           <div className="space-y-6">
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white/[0.03] text-brand">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface text-brand">
                   <GraduationCap className="h-5 w-5" />
                 </span>
-                <h3 className="font-display text-base font-semibold text-white">Education</h3>
+                <h3 className="font-display text-base font-semibold text-heading">Education</h3>
               </div>
               <div className="mt-5 space-y-5">
                 {education.map((e) => (
                   <div key={e.school} className="border-l-2 border-line pl-4">
                     <div className="flex flex-wrap items-baseline justify-between gap-2">
-                      <p className="font-semibold text-white">{e.school}</p>
+                      <p className="font-semibold text-heading">{e.school}</p>
                       <span className="font-mono text-[11px] text-faint">{e.period}</span>
                     </div>
                     <p className="mt-0.5 text-[13.5px] text-muted">{e.degree}</p>
@@ -43,15 +43,15 @@ export function Background() {
 
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white/[0.03] text-brand">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface text-brand">
                   <Award className="h-5 w-5" />
                 </span>
-                <h3 className="font-display text-base font-semibold text-white">Certifications</h3>
+                <h3 className="font-display text-base font-semibold text-heading">Certifications</h3>
               </div>
               <div className="mt-4 space-y-2.5">
                 {certifications.map((c) => {
                   const cls =
-                    'group flex items-center justify-between rounded-xl border border-line bg-white/[0.02] px-4 py-3 transition-colors'
+                    'group flex items-center justify-between rounded-xl border border-line bg-surface px-4 py-3 transition-colors'
                   const inner = (
                     <>
                       <div>
@@ -88,10 +88,10 @@ export function Background() {
         <Reveal delay={0.1}>
           <div className="glass h-full rounded-2xl p-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white/[0.03] text-brand">
+              <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface text-brand">
                 <Users className="h-5 w-5" />
               </span>
-              <h3 className="font-display text-base font-semibold text-white">Leadership & Community</h3>
+              <h3 className="font-display text-base font-semibold text-heading">Leadership & Community</h3>
             </div>
             <p className="mt-3 text-[13px] text-muted">
               Beyond building — founding clubs, organising fests and mentoring, from my time at IIIT-Delhi.

@@ -10,8 +10,10 @@ import { Impact } from './components/Impact'
 import { Process } from './components/Process'
 import { Projects } from './components/Projects'
 import { Experience } from './components/Experience'
+import { Testimonials } from './components/Testimonials'
 import { Skills } from './components/Skills'
 import { Background } from './components/Background'
+import { Writing } from './components/Writing'
 import { Faq } from './components/Faq'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
@@ -40,8 +42,10 @@ export default function App() {
         <Process />
         <Projects />
         <Experience />
+        <Testimonials />
         <Skills />
         <Background />
+        <Writing />
         <Faq />
         <Contact />
         </main>

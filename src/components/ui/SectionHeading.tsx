@@ -19,7 +19,7 @@ export function SectionHeading({
         <Reveal>
           <span
             className={cn(
-              'inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted',
+              'inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted',
               align === 'center' && 'mx-auto',
             )}
           >

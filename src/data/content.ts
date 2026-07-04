@@ -27,6 +27,9 @@ export const profile = {
   github: 'https://github.com/Mohit1053',
   resume: '/Mohit_Resume.pdf',
   availability: 'Open to freelance / agency work & senior roles',
+  /** Optional headshot. Drop a square photo in public/ (e.g. '/me.jpg') and set the path here.
+   *  Leave '' to show the gradient monogram fallback. */
+  photo: '',
 } as const
 
 export type NavItem = { label: string; href: string }
@@ -741,5 +744,62 @@ export const faqs: Faq[] = [
   {
     q: 'Which domains do you know best?',
     a: 'Fintech & markets, media & personalisation, voice AI, and AI automation. But the underlying AI/product skills transfer across industries.',
+  },
+]
+
+/* ----------------------------------------------------------------------------
+   TESTIMONIALS  ⚠️  PLACEHOLDERS — replace with REAL LinkedIn recommendations /
+   client quotes before sharing widely. Delete an entry to remove it; empty the
+   whole array and the section hides itself automatically. Do not attribute a
+   quote to a real person unless they actually said it.
+   ---------------------------------------------------------------------------- */
+export type Testimonial = { quote: string; name: string; role: string; link?: string }
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      'Add a real recommendation here — e.g. how you scoped, built and shipped something, and the impact it had. Two or three sentences works best.',
+    name: 'A manager or client',
+    role: 'Their role · Company',
+  },
+  {
+    quote:
+      'Paste a LinkedIn recommendation or a client quote. Specific, outcome-focused lines (“cut cost by X”, “shipped in N weeks”) land far harder than generic praise.',
+    name: 'A teammate or founder',
+    role: 'Their role · Company',
+  },
+  {
+    quote:
+      'A third short quote rounds out the section. Aim for a mix of perspectives — a manager, a peer engineer, and a client you delivered for.',
+    name: 'A peer or collaborator',
+    role: 'Their role · Company',
+  },
+]
+
+/* ----------------------------------------------------------------------------
+   WRITING — link to published articles / talks. Update `url` to the real post
+   when live; until then they point to your LinkedIn. Empty the array to hide.
+   ---------------------------------------------------------------------------- */
+export type Article = { title: string; blurb: string; tag: string; date: string; url: string }
+export const writing: Article[] = [
+  {
+    title: 'Building Voice AI for Indian languages',
+    blurb: 'Latency, code-switching and the gap between a slick demo and a calling bot that survives 36K+ real conversations.',
+    tag: 'Voice AI',
+    date: 'Coming soon',
+    url: 'https://www.linkedin.com/in/mohit1005',
+  },
+  {
+    title: 'Agentic RAG for market intelligence',
+    blurb: 'How fundamental scoring, technical signals and NLP sentiment combine into a daily signal the trading desk actually trusts.',
+    tag: 'Quant · RAG',
+    date: 'Coming soon',
+    url: 'https://www.linkedin.com/in/mohit1005',
+  },
+  {
+    title: 'From AI demo to AI product',
+    blurb: 'The unglamorous work — evaluation, monitoring, cost control — that decides whether an AI feature ever ships.',
+    tag: 'AI Product',
+    date: 'Coming soon',
+    url: 'https://www.linkedin.com/in/mohit1005',
   },
 ]

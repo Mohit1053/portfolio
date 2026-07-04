@@ -80,7 +80,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
                     {Cat && <Cat className="h-4 w-4" />}
                     {project.category} · {project.year}
                   </div>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-white">{project.title}</h3>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-heading">{project.title}</h3>
                   <p className="mt-1.5 text-sm text-muted">{project.tagline}</p>
                 </div>
                 <button
@@ -88,7 +88,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
                   type="button"
                   onClick={onClose}
                   aria-label="Close"
-                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-line-2 text-muted transition-colors hover:text-white"
+                  className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-line-2 text-muted transition-colors hover:text-heading"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -103,7 +103,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
                   style={{ gridTemplateColumns: `repeat(${Math.min(project.metrics.length, 3)}, minmax(0,1fr))` }}
                 >
                   {project.metrics.map((m) => (
-                    <div key={m.label} className="min-w-0 rounded-xl border border-line bg-white/[0.02] p-3 text-center">
+                    <div key={m.label} className="min-w-0 rounded-xl border border-line bg-surface p-3 text-center">
                       <div className="text-gradient text-lg font-extrabold">{m.value}</div>
                       <p className="mt-0.5 text-[11px] text-muted">{m.label}</p>
                     </div>
@@ -127,7 +127,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
 
               <div className="mt-6 flex flex-wrap gap-1.5">
                 {project.tags.map((t) => (
-                  <span key={t} className="rounded-md border border-line bg-white/[0.02] px-2.5 py-1 font-mono text-[11px] text-muted">
+                  <span key={t} className="rounded-md border border-line bg-surface px-2.5 py-1 font-mono text-[11px] text-muted">
                     {t}
                   </span>
                 ))}
@@ -143,7 +143,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
                     href={l.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2 rounded-full border border-line-2 px-4 py-2.5 text-sm font-semibold text-txt transition-colors hover:border-brand/60 hover:bg-white/[0.04]"
+                    className="inline-flex items-center gap-2 rounded-full border border-line-2 px-4 py-2.5 text-sm font-semibold text-txt transition-colors hover:border-brand/60 hover:bg-surface-2"
                   >
                     {l.label === 'GitHub' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
                     {l.label}

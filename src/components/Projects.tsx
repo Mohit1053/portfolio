@@ -31,7 +31,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white/[0.03] text-brand transition-colors group-hover:text-cyan">
+        <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface text-brand transition-colors group-hover:text-cyan">
           {Cat && <Cat className="h-5 w-5" />}
         </span>
         <div className="flex items-center gap-2">
@@ -44,13 +44,13 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         </div>
       </div>
 
-      <h3 className="mt-4 font-display text-[17px] font-semibold leading-snug text-white">{project.title}</h3>
+      <h3 className="mt-4 font-display text-[17px] font-semibold leading-snug text-heading">{project.title}</h3>
       <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{project.tagline}</p>
 
       {project.metrics && project.metrics.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
           {project.metrics.map((m) => (
-            <span key={m.label} className="rounded-lg border border-line bg-white/[0.02] px-2 py-1">
+            <span key={m.label} className="rounded-lg border border-line bg-surface px-2 py-1">
               <span className="text-gradient text-xs font-bold">{m.value}</span>
               <span className="ml-1 text-[10px] text-faint">{m.label}</span>
             </span>
@@ -61,7 +61,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       <div className="mt-auto flex items-center justify-between pt-5">
         <div className="flex flex-wrap gap-1.5">
           {project.tags.slice(0, 3).map((t) => (
-            <span key={t} className="rounded-md bg-white/[0.03] px-2 py-0.5 font-mono text-[10px] text-muted">
+            <span key={t} className="rounded-md bg-surface px-2 py-0.5 font-mono text-[10px] text-muted">
               {t}
             </span>
           ))}
@@ -111,8 +111,8 @@ export function Projects() {
               className={cn(
                 'rounded-full border px-3.5 py-2.5 text-[13px] font-medium transition-all',
                 isActive
-                  ? 'border-brand/60 bg-brand/15 text-white'
-                  : 'border-line text-muted hover:border-line-2 hover:text-white',
+                  ? 'border-brand/60 bg-brand/15 text-heading'
+                  : 'border-line text-muted hover:border-line-2 hover:text-heading',
               )}
             >
               {c}

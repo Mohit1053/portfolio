@@ -10,8 +10,8 @@ export function Footer() {
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="max-w-sm">
             <a href="#top" className="flex items-center gap-2.5">
-              <span className="grid h-9 w-9 place-items-center rounded-xl ring-gradient text-sm font-bold text-white">M</span>
-              <span className="font-display text-lg font-semibold text-white">
+              <span className="grid h-9 w-9 place-items-center rounded-xl ring-gradient text-sm font-bold text-heading">M</span>
+              <span className="font-display text-lg font-semibold text-heading">
                 Mohit<span className="text-brand">.</span>
               </span>
             </a>
@@ -32,7 +32,7 @@ export function Footer() {
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noreferrer noopener' : undefined}
                   aria-label={label}
-                  className="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition-colors hover:border-brand/50 hover:text-white"
+                  className="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition-colors hover:border-brand/50 hover:text-heading"
                 >
                   <Ico className="h-4 w-4" />
                 </a>
@@ -48,7 +48,7 @@ export function Footer() {
               <a
                 key={n.href}
                 href={n.href}
-                className="inline-block py-1.5 text-[13.5px] text-muted transition-colors hover:text-white"
+                className="inline-block py-1.5 text-[13.5px] text-muted transition-colors hover:text-heading"
               >
                 {n.label}
               </a>
@@ -60,7 +60,7 @@ export function Footer() {
           <p className="text-[12.5px] text-faint">© {year} Mohit. Built from scratch with React & Tailwind.</p>
           <a
             href="#top"
-            className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-[12px] text-muted transition-colors hover:border-brand/50 hover:text-white"
+            className="inline-flex items-center gap-1.5 rounded-full border border-line px-3 py-1.5 text-[12px] text-muted transition-colors hover:border-brand/50 hover:text-heading"
           >
             Back to top <ArrowUp className="h-3.5 w-3.5" />
           </a>

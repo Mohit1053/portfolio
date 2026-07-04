@@ -23,7 +23,7 @@ export function Impact() {
           <Reveal key={m.label} delay={(i % 4) * 0.07}>
             <div className="glass glass-hover h-full rounded-2xl p-5 text-center sm:p-6">
               <div className="text-gradient text-2xl font-extrabold sm:text-[2.5rem] sm:leading-none">{m.value}</div>
-              <p className="mt-2 text-sm font-semibold text-white">{m.label}</p>
+              <p className="mt-2 text-sm font-semibold text-heading">{m.label}</p>
               <p className="mt-1 text-[12px] leading-snug text-muted">{m.sub}</p>
             </div>
           </Reveal>

@@ -25,7 +25,7 @@ export function WhyMe() {
               <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-brand/20 to-cyan/10 text-brand">
                 <Icon name={d.icon} className="h-5 w-5" />
               </span>
-              <h3 className="mt-4 font-display text-base font-semibold text-white">{d.title}</h3>
+              <h3 className="mt-4 font-display text-base font-semibold text-heading">{d.title}</h3>
               <p className="mt-2 text-[13.5px] leading-relaxed text-muted">{d.desc}</p>
             </div>
           </Reveal>

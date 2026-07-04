@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, ArrowUpRight, Download } from 'lucide-react'
 import { navItems, profile } from '../data/content'
 import { useActiveSection, useScrolled } from '../lib/useScroll'
+import { ThemeToggle } from './ui/ThemeToggle'
 import { cn } from '../lib/cn'
 
 const sectionIds = navItems.map((n) => n.href.replace('#', ''))
@@ -10,10 +11,10 @@ const sectionIds = navItems.map((n) => n.href.replace('#', ''))
 function Monogram() {
   return (
     <a href="#top" className="flex items-center gap-2.5 font-display" aria-label="Home">
-      <span className="grid h-9 w-9 place-items-center rounded-xl ring-gradient text-sm font-bold text-white">
+      <span className="grid h-9 w-9 place-items-center rounded-xl ring-gradient text-sm font-bold text-heading">
         M
       </span>
-      <span className="hidden text-[15px] font-semibold tracking-tight text-white sm:block">
+      <span className="hidden text-[15px] font-semibold tracking-tight text-heading sm:block">
         Mohit<span className="text-brand">.</span>
       </span>
     </a>
@@ -91,13 +92,13 @@ export function Navbar() {
                     aria-current={isActive ? 'true' : undefined}
                     className={cn(
                       'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors',
-                      isActive ? 'text-white' : 'text-muted hover:text-white',
+                      isActive ? 'text-heading' : 'text-muted hover:text-heading',
                     )}
                   >
                     {isActive && (
                       <motion.span
                         layoutId="nav-pill"
-                        className="absolute inset-0 -z-10 rounded-full border border-line-2 bg-white/[0.05]"
+                        className="absolute inset-0 -z-10 rounded-full border border-line-2 bg-surface-2"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                       />
                     )}
@@ -108,10 +109,11 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <a
                 href={profile.resume}
                 download
-                className="hidden items-center gap-1.5 rounded-full border border-line-2 px-3.5 py-2 text-sm font-medium text-txt transition-colors hover:border-brand/60 hover:bg-white/[0.04] sm:inline-flex"
+                className="hidden items-center gap-1.5 rounded-full border border-line-2 px-3.5 py-2 text-sm font-medium text-txt transition-colors hover:border-brand/60 hover:bg-surface-2 sm:inline-flex"
               >
                 <Download className="h-4 w-4" />
                 Résumé
@@ -127,7 +129,7 @@ export function Navbar() {
                 ref={hamburgerRef}
                 type="button"
                 onClick={() => setOpen(true)}
-                className="grid h-10 w-10 place-items-center rounded-xl border border-line-2 text-white lg:hidden"
+                className="grid h-10 w-10 place-items-center rounded-xl border border-line-2 text-heading lg:hidden"
                 aria-label="Open menu"
                 aria-expanded={open}
                 aria-controls="mobile-menu"
@@ -166,7 +168,7 @@ export function Navbar() {
                   ref={closeBtnRef}
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="grid h-10 w-10 place-items-center rounded-xl border border-line-2 text-white"
+                  className="grid h-10 w-10 place-items-center rounded-xl border border-line-2 text-heading"
                   aria-label="Close menu"
                 >
                   <X className="h-5 w-5" />
@@ -177,7 +179,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-4 py-3 text-lg font-medium text-txt transition-colors hover:bg-white/[0.04] hover:text-white"
+                  className="rounded-xl px-4 py-3 text-lg font-medium text-txt transition-colors hover:bg-surface-2 hover:text-heading"
                 >
                   {item.label}
                 </a>

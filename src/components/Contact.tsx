@@ -46,7 +46,7 @@ export function Contact() {
                 <span className="h-2 w-2 rounded-full bg-emerald" />
                 {profile.availability}
               </span>
-              <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+              <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-heading sm:text-4xl">
                 Let’s build something <span className="text-gradient">worth shipping.</span>
               </h2>
               <p className="mt-4 max-w-md text-[15px] leading-relaxed text-muted">
@@ -57,8 +57,8 @@ export function Contact() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {channels.map((c) => {
                   const content = (
-                    <div className="flex items-center gap-3 rounded-xl border border-line bg-white/[0.02] px-4 py-3 transition-colors hover:border-brand/40">
-                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/[0.04] text-brand">
+                    <div className="flex items-center gap-3 rounded-xl border border-line bg-surface px-4 py-3 transition-colors hover:border-brand/40">
+                      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-surface-2 text-brand">
                         <c.icon className="h-4 w-4" />
                       </span>
                       <div className="min-w-0">
@@ -87,7 +87,7 @@ export function Contact() {
                   href={profile.github}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="grid h-11 w-11 place-items-center rounded-xl border border-line text-muted transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-white"
+                  className="grid h-11 w-11 place-items-center rounded-xl border border-line text-muted transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-heading"
                   aria-label="GitHub"
                 >
                   <Github className="h-5 w-5" />
@@ -96,7 +96,7 @@ export function Contact() {
                   href={profile.linkedin}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="grid h-11 w-11 place-items-center rounded-xl border border-line text-muted transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-white"
+                  className="grid h-11 w-11 place-items-center rounded-xl border border-line text-muted transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-heading"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="h-5 w-5" />
@@ -132,8 +132,8 @@ export function Contact() {
                       className={
                         'rounded-full border px-3.5 py-2.5 text-[12.5px] font-medium transition-all ' +
                         (type === e
-                          ? 'border-brand/60 bg-brand/15 text-white'
-                          : 'border-line text-muted hover:text-white')
+                          ? 'border-brand/60 bg-brand/15 text-heading'
+                          : 'border-line text-muted hover:text-heading')
                       }
                     >
                       {e}

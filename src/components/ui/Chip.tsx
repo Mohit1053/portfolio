@@ -5,7 +5,7 @@ export function Chip({ children, className }: { children: ReactNode; className?:
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full border border-line bg-white/[0.03] px-3 py-1 text-xs font-medium text-muted',
+        'inline-flex items-center rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium text-muted',
         className,
       )}
     >

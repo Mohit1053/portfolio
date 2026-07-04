@@ -40,7 +40,7 @@ export function Experience() {
                   <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="font-display text-lg font-semibold text-white">{exp.role}</h3>
+                        <h3 className="font-display text-lg font-semibold text-heading">{exp.role}</h3>
                         {exp.current && (
                           <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald/30 bg-emerald/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald" /> Current
@@ -66,7 +66,7 @@ export function Experience() {
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {exp.tags.map((t) => (
-                      <span key={t} className="rounded-md bg-white/[0.03] px-2 py-1 font-mono text-[10px] text-muted">
+                      <span key={t} className="rounded-md bg-surface px-2 py-1 font-mono text-[10px] text-muted">
                         {t}
                       </span>
                     ))}

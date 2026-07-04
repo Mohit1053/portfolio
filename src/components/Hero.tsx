@@ -42,15 +42,26 @@ export function Hero() {
               </span>
             </motion.div>
 
-            <motion.p
+            <motion.div
               custom={1}
               variants={fade}
               initial="hidden"
               animate="show"
-              className="mt-6 font-mono text-sm text-muted"
+              className="mt-6 flex items-center gap-3.5"
             >
-              Hi, I’m Mohit 👋
-            </motion.p>
+              <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl ring-gradient">
+                {profile.photo ? (
+                  <img src={profile.photo} alt="Mohit" className="h-full w-full rounded-2xl object-cover" />
+                ) : (
+                  <span className="font-display text-xl font-bold text-heading">M</span>
+                )}
+                <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-ink bg-emerald" />
+              </span>
+              <div>
+                <p className="font-mono text-sm text-muted">Hi, I’m Mohit 👋</p>
+                <p className="text-[13px] font-medium text-faint">{profile.role}</p>
+              </div>
+            </motion.div>
 
             <motion.h1
               custom={2}
@@ -102,13 +113,13 @@ export function Hero() {
               <a
                 href={profile.resume}
                 download
-                className="inline-flex items-center gap-2 rounded-full border border-line-2 px-5 py-3 text-sm font-semibold text-txt transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:bg-white/[0.04]"
+                className="inline-flex items-center gap-2 rounded-full border border-line-2 px-5 py-3 text-sm font-semibold text-txt transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:bg-surface-2"
               >
                 <Download className="h-4 w-4" /> Résumé
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-muted transition-colors hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-muted transition-colors hover:text-heading"
               >
                 Hire me / work together
               </a>
@@ -133,7 +144,7 @@ export function Hero() {
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noreferrer noopener' : undefined}
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-xl border border-line text-muted transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-white"
+                  className="grid h-10 w-10 place-items-center rounded-xl border border-line text-muted transition-all hover:-translate-y-0.5 hover:border-brand/50 hover:text-heading"
                 >
                   <Ico className="h-[18px] w-[18px]" />
                 </a>
@@ -169,7 +180,7 @@ export function Hero() {
                       initial={{ opacity: 0, x: 16 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + i * 0.12, duration: 0.5 }}
-                      className="flex items-center justify-between rounded-xl border border-line bg-white/[0.02] px-3.5 py-3"
+                      className="flex items-center justify-between rounded-xl border border-line bg-surface px-3.5 py-3"
                     >
                       <div className="flex items-center gap-3">
                         <span className="relative flex h-2 w-2">
@@ -198,7 +209,7 @@ export function Hero() {
                   {['LLMs', 'RAG', 'Voice AI', 'Quant', 'Full-stack', 'Product'].map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-line bg-white/[0.02] px-2 py-1 font-mono text-[10px] text-muted"
+                      className="rounded-md border border-line bg-surface px-2 py-1 font-mono text-[10px] text-muted"
                     >
                       {t}
                     </span>

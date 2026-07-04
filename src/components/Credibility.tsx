@@ -10,7 +10,7 @@ export function Credibility() {
         <div className="mt-6 flex flex-wrap items-start justify-center gap-x-8 gap-y-5 sm:gap-x-14">
           {affiliations.map((a) => (
             <div key={a.name} className="group text-center">
-              <p className="font-display text-[15px] font-semibold text-muted transition-colors group-hover:text-white sm:text-base">
+              <p className="font-display text-[15px] font-semibold text-muted transition-colors group-hover:text-heading sm:text-base">
                 {a.name}
               </p>
               <p className="mt-0.5 text-[11px] text-faint">{a.note}</p>

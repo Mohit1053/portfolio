@@ -36,7 +36,7 @@ export function Faq() {
                 className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                 aria-expanded={isOpen}
               >
-                <span className="text-[15px] font-semibold text-white">{f.q}</span>
+                <span className="text-[15px] font-semibold text-heading">{f.q}</span>
                 <Plus
                   className={cn('h-5 w-5 shrink-0 text-brand transition-transform duration-300', isOpen && 'rotate-45')}
                 />

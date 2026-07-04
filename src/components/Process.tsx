@@ -27,7 +27,7 @@ export function Process() {
                     {step.n}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-base font-semibold text-white">{step.title}</h3>
+                <h3 className="mt-4 font-display text-base font-semibold text-heading">{step.title}</h3>
                 <p className="mt-1.5 text-[13px] leading-relaxed text-muted">{step.desc}</p>
               </div>
             </Reveal>

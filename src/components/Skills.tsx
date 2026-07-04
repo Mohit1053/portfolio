@@ -22,16 +22,16 @@ export function Skills() {
           <Reveal key={g.group} delay={(i % 3) * 0.07}>
             <div className="glass glass-hover h-full rounded-2xl p-6">
               <div className="flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-white/[0.03] text-brand">
+                <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface text-brand">
                   <Icon name={g.icon} className="h-5 w-5" />
                 </span>
-                <h3 className="font-display text-base font-semibold text-white">{g.group}</h3>
+                <h3 className="font-display text-base font-semibold text-heading">{g.group}</h3>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {g.items.map((item) => (
                   <span
                     key={item}
-                    className="rounded-lg border border-line bg-white/[0.02] px-2.5 py-1.5 text-[12.5px] font-medium text-txt/90 transition-colors hover:border-brand/40 hover:text-white"
+                    className="rounded-lg border border-line bg-surface px-2.5 py-1.5 text-[12.5px] font-medium text-txt/90 transition-colors hover:border-brand/40 hover:text-heading"
                   >
                     {item}
                   </span>
