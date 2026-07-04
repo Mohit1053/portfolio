@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#06070f" />
 
@@ -52,6 +53,34 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured data for search engines / rich results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mohit",
+        "jobTitle": "AI Product Manager & Engineer",
+        "email": "mailto:98765mohitkumar@gmail.com",
+        "telephone": "+91-8851228350",
+        "sameAs": ["https://www.linkedin.com/in/mohit1005", "https://github.com/Mohit1053"],
+        "worksFor": { "@type": "Organization", "name": "Times Internet" },
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Indraprastha Institute of Information Technology, Delhi (IIIT-Delhi)"
+        },
+        "address": { "@type": "PostalAddress", "addressLocality": "New Delhi / Gurgaon", "addressCountry": "IN" },
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Large Language Models",
+          "Retrieval-Augmented Generation",
+          "Voice AI",
+          "Product Management",
+          "Quantitative Finance"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -50,6 +50,18 @@ export const heroStats: Stat[] = [
   { value: '80%', label: 'Cost cut on flagship AI product' },
 ]
 
+/* ----------------------------------------------------------------------------
+   CREDIBILITY BAND — places I've genuinely built & shipped (honest social proof)
+   ---------------------------------------------------------------------------- */
+export type Affiliation = { name: string; note: string }
+export const affiliations: Affiliation[] = [
+  { name: 'The Economic Times', note: 'Home-feed personalisation' },
+  { name: 'Times Internet', note: 'Technical Product Manager' },
+  { name: 'IIIT-Delhi', note: 'B.Tech CS + AI' },
+  { name: 'Scrap Uncle', note: 'AI product' },
+  { name: 'SBI Labs', note: 'Applied ML research' },
+]
+
 /* Moving tech marquee under the hero */
 export const marqueeItems: string[] = [
   'LLMs',

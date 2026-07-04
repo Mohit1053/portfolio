@@ -1,0 +1,12 @@
+{
+  "name": "Mohit — AI Product Manager, Engineer & Founder",
+  "short_name": "Mohit",
+  "description": "One-stop AI partner across Product, Engineering and Data.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06070f",
+  "theme_color": "#06070f",
+  "icons": [
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}

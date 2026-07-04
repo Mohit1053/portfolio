@@ -2,6 +2,7 @@ import { MotionConfig } from 'framer-motion'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { Marquee } from './components/Marquee'
+import { Credibility } from './components/Credibility'
 import { About } from './components/About'
 import { Services } from './components/Services'
 import { WhyMe } from './components/WhyMe'
@@ -31,6 +32,7 @@ export default function App() {
         <main id="main">
         <Hero />
         <Marquee />
+        <Credibility />
         <About />
         <Services />
         <WhyMe />
