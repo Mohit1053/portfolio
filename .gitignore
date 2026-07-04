@@ -25,3 +25,8 @@ shots
 *.njsproj
 *.sln
 *.sw?
+.env
+__pycache__/
+.venv/
+*.pyc
+.mcp.json
