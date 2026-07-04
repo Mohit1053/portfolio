@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageCircle, Download } from 'lucide-react'
+import { Mail, Phone, MapPin, ArrowUpRight, Send, MessageCircle, Download, Loader2 } from 'lucide-react'
 import { FiGithub as Github, FiLinkedin as Linkedin } from 'react-icons/fi'
 import { profile } from '../data/content'
 import { Section } from './ui/Section'
@@ -16,19 +16,47 @@ const channels = [
   { icon: MapPin, label: 'Location', value: profile.location, href: undefined },
 ]
 
+type Status = 'idle' | 'submitting' | 'success' | 'error'
+
 export function Contact() {
   const [type, setType] = useState(engagements[1])
+  const [status, setStatus] = useState<Status>('idle')
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
     const name = String(data.get('name') ?? '')
     const email = String(data.get('email') ?? '')
     const message = String(data.get('message') ?? '')
-    const subject = `Portfolio enquiry — ${type}`
-    const body = `Name: ${name}\nEmail: ${email}\nType: ${type}\n\n${message}`
-    window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+
+    // No backend configured → open the visitor's email app, pre-filled.
+    if (!profile.formEndpoint) {
+      const subject = `Portfolio enquiry — ${type}`
+      const body = `Name: ${name}\nEmail: ${email}\nType: ${type}\n\n${message}`
+      window.location.href = `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      return
+    }
+
+    try {
+      setStatus('submitting')
+      const res = await fetch(profile.formEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          enquiryType: type,
+          _subject: `Portfolio enquiry — ${type}`,
+        }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setStatus('success')
+      form.reset()
+    } catch {
+      setStatus('error')
+    }
   }
 
   return (
@@ -158,17 +186,42 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full cta-grad bg-[length:180%_180%] px-5 py-3.5 text-sm font-semibold transition-all duration-300 hover:bg-right hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]"
+                disabled={status === 'submitting'}
+                className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full cta-grad bg-[length:180%_180%] px-5 py-3.5 text-sm font-semibold transition-all duration-300 hover:bg-right hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                <Send className="h-4 w-4" /> Send message
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                {status === 'submitting' ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+                  </>
+                ) : (
+                  <>
+                    <Send className="h-4 w-4" /> Send message
+                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </>
+                )}
               </button>
-              <p className="mt-3 break-words text-center text-[11px] text-faint">
-                Opens your email app, pre-filled. Prefer direct?{' '}
-                <a href={`mailto:${profile.email}`} className="text-brand hover:text-cyan">
-                  {profile.email}
-                </a>
-              </p>
+
+              {status === 'success' ? (
+                <p role="status" className="mt-3 text-center text-[12px] font-medium text-emerald">
+                  Thanks — your message is on its way. I’ll get back to you within a day.
+                </p>
+              ) : status === 'error' ? (
+                <p role="alert" className="mt-3 break-words text-center text-[12px] font-medium text-pink">
+                  Something went wrong. Please email me directly at{' '}
+                  <a href={`mailto:${profile.email}`} className="underline">
+                    {profile.email}
+                  </a>
+                  .
+                </p>
+              ) : (
+                <p className="mt-3 break-words text-center text-[11px] text-faint">
+                  {profile.formEndpoint ? 'I usually reply within a day.' : 'Opens your email app, pre-filled.'} Prefer
+                  direct?{' '}
+                  <a href={`mailto:${profile.email}`} className="text-brand hover:text-cyan">
+                    {profile.email}
+                  </a>
+                </p>
+              )}
             </form>
           </Reveal>
         </div>

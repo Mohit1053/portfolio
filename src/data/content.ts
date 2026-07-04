@@ -30,6 +30,10 @@ export const profile = {
   /** Optional headshot. Drop a square photo in public/ (e.g. '/me.jpg') and set the path here.
    *  Leave '' to show the gradient monogram fallback. */
   photo: '',
+  /** Contact-form backend. Create a free form at https://formspree.io, paste its endpoint
+   *  (e.g. 'https://formspree.io/f/xxxxxxxx') here, and submissions arrive in your inbox with
+   *  no page reload. Leave '' to fall back to opening the visitor's email app (mailto). */
+  formEndpoint: '',
 } as const
 
 export type NavItem = { label: string; href: string }

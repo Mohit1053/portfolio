@@ -38,7 +38,13 @@ Open it and edit the plain-text values. The layout updates automatically.
 | Edit skills | `skillGroups` |
 | Edit education / certs / leadership | `education`, `certifications`, `leadership` |
 | Edit the FAQ | `faqs` |
+| Edit testimonials (or empty to hide the section) | `testimonials` |
+| Edit writing / articles (or empty to hide) | `writing` |
+| Add a hero headshot | `profile.photo` (drop a square image in `public/`, set the path) |
+| Receive form submissions in your inbox | `profile.formEndpoint` (see below) |
 | Change nav links | `navItems` |
+
+> Light/dark theme, the scroll-to-top button, and the animated console are automatic — no config needed. The site defaults to dark and remembers the visitor's choice.
 
 ### Add a new project
 
@@ -94,6 +100,8 @@ Edit the HTML in `scripts/og.mjs` to change it.
 3. Vercel auto-detects Vite. Confirm: **Build = `npm run build`**, **Output = `dist`**. Deploy.
 4. (Optional) Add a custom domain in Vercel → Settings → Domains.
 
+`vercel.json` sets security headers + long-lived caching for hashed assets, and `public/404.html` is a branded not-found page — both applied automatically on deploy.
+
 ### Option B — GitHub Pages
 
 ```bash
@@ -105,12 +113,12 @@ If serving from `https://<user>.github.io/<repo>/` (a sub-path), set `base: '/<r
 
 ---
 
-## Make the contact form send email to an inbox (optional)
+## Make the contact form land in your inbox (optional)
 
-The form currently opens the visitor's email client, pre-filled to your address — zero setup, always works. To receive submissions **without** opening an email client:
+Out of the box the form opens the visitor's email client, pre-filled to your address — zero setup, always works. To receive submissions **without** opening an email client (with inline success / error states):
 
 1. Create a free form at [formspree.io](https://formspree.io) and copy your endpoint (e.g. `https://formspree.io/f/abc123`).
-2. In [`src/components/Contact.tsx`](src/components/Contact.tsx), replace the `onSubmit` handler with a `fetch(POST)` to that endpoint (send the `FormData`), and show a success state.
+2. Set `profile.formEndpoint` to that URL in [`src/data/content.ts`](src/data/content.ts). That's it — the form auto-switches to async submit with a "Sending…" state and a success / error message.
 
 ---
 
