@@ -22,7 +22,7 @@ export function Testimonials() {
         {testimonials.map((t, i) => (
           <Reveal key={t.name + i} delay={i * 0.06} className="h-full">
             <figure className="glass glass-hover flex h-full flex-col rounded-2xl p-6">
-              <Quote className="h-6 w-6 shrink-0 text-brand/70" />
+              <Quote aria-hidden className="h-6 w-6 shrink-0 text-brand/70" />
               <blockquote className="mt-4 flex-1 text-[14.5px] leading-relaxed text-txt/90">“{t.quote}”</blockquote>
               <figcaption className="mt-5 border-t border-line pt-4">
                 <p className="text-[14px] font-semibold text-heading">{t.name}</p>

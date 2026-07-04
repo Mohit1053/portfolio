@@ -6,7 +6,6 @@ type Props = {
   delay?: number
   y?: number
   className?: string
-  as?: 'div' | 'li' | 'span'
 }
 
 export function Reveal({ children, delay = 0, y = 26, className }: Props) {

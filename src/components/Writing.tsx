@@ -37,7 +37,10 @@ export function Writing() {
               <p className="mt-2 flex-1 text-[13.5px] leading-relaxed text-muted">{a.blurb}</p>
               <span className="mt-5 inline-flex items-center gap-1.5 font-mono text-[12px] text-brand transition-colors group-hover:text-cyan">
                 Read on LinkedIn
-                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight
+                  aria-hidden
+                  className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
               </span>
             </a>
           </Reveal>

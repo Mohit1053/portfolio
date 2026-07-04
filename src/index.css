@@ -126,6 +126,13 @@
     color: transparent;
   }
 
+  /* Primary CTA gradient — theme-invariant bright fill + always-dark label,
+     so the button reads correctly in BOTH light and dark themes. */
+  .cta-grad {
+    background-image: linear-gradient(to right, #9d7bff, #22d3ee, #34d399);
+    color: #0b1220;
+  }
+
   .glass {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
     border: 1px solid var(--color-line);
@@ -309,6 +316,14 @@ html[data-theme='light'] {
   --color-heading: #0b1220;
   --color-surface: rgba(12, 18, 45, 0.035);
   --color-surface-2: rgba(12, 18, 45, 0.07);
+
+  /* Darken accent tokens so accent-coloured TEXT meets WCAG AA on the light bg.
+     (Gradient CTAs use the theme-invariant .cta-grad, so these don't dull them.) */
+  --color-brand: #6d28d9;
+  --color-cyan: #0e7490;
+  --color-emerald: #047857;
+  --color-amber: #b45309;
+  --color-pink: #be185d;
 
   --shadow-glow: 0 0 0 1px rgba(124, 92, 255, 0.28), 0 12px 40px -12px rgba(124, 92, 255, 0.32);
 }

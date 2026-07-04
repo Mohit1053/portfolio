@@ -4,7 +4,6 @@ import { FiGithub as Github, FiLinkedin as Linkedin } from 'react-icons/fi'
 import { heroStats, profile } from '../data/content'
 import { Aurora } from './ui/Aurora'
 import { Typewriter } from './ui/Typewriter'
-import { cn } from '../lib/cn'
 
 const shipStatus = [
   { name: 'Voice AI Calling Platform', state: 'live', meta: '36K+ calls · <700ms', color: '#34d399' },
@@ -49,12 +48,14 @@ export function Hero() {
               animate="show"
               className="mt-6 flex items-center gap-3.5"
             >
-              <span className="relative grid h-14 w-14 shrink-0 place-items-center overflow-hidden rounded-2xl ring-gradient">
-                {profile.photo ? (
-                  <img src={profile.photo} alt="Mohit" className="h-full w-full rounded-2xl object-cover" />
-                ) : (
-                  <span className="font-display text-xl font-bold text-heading">M</span>
-                )}
+              <span className="relative inline-grid shrink-0">
+                <span className="grid h-14 w-14 place-items-center overflow-hidden rounded-2xl ring-gradient">
+                  {profile.photo ? (
+                    <img src={profile.photo} alt="Mohit" className="h-full w-full rounded-2xl object-cover" />
+                  ) : (
+                    <span className="font-display text-xl font-bold text-heading">M</span>
+                  )}
+                </span>
                 <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-ink bg-emerald" />
               </span>
               <div>
@@ -105,7 +106,7 @@ export function Hero() {
             >
               <a
                 href="#work"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-2 via-cyan to-emerald bg-[length:180%_180%] px-5 py-3 text-sm font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-right hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]"
+                className="group inline-flex items-center gap-2 rounded-full cta-grad bg-[length:180%_180%] px-5 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:bg-right hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]"
               >
                 View my work
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -161,15 +162,16 @@ export function Hero() {
           >
             <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-brand/20 via-cyan/10 to-emerald/10 blur-2xl" />
             <div className="glass animate-float rounded-2xl p-1.5 shadow-2xl">
-              <div className="rounded-[0.85rem] bg-ink/70 p-5">
+              {/* Fixed-dark "terminal" so the coloured status badges read in both themes */}
+              <div className="rounded-[0.85rem] bg-[#0a0c18] p-5">
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
                     <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
                     <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
                     <span className="h-3 w-3 rounded-full bg-[#28c840]" />
                   </div>
-                  <span className="flex items-center gap-1.5 font-mono text-[11px] text-faint">
-                    <Sparkles className="h-3 w-3 text-brand" /> currently shipping
+                  <span className="flex items-center gap-1.5 font-mono text-[11px] text-[#7d8699]">
+                    <Sparkles className="h-3 w-3 text-[#9d7bff]" /> currently shipping
                   </span>
                 </div>
 
@@ -180,7 +182,7 @@ export function Hero() {
                       initial={{ opacity: 0, x: 16 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.6 + i * 0.12, duration: 0.5 }}
-                      className="flex items-center justify-between rounded-xl border border-line bg-surface px-3.5 py-3"
+                      className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.03] px-3.5 py-3"
                     >
                       <div className="flex items-center gap-3">
                         <span className="relative flex h-2 w-2">
@@ -191,8 +193,8 @@ export function Hero() {
                           <span className="relative inline-flex h-2 w-2 rounded-full" style={{ background: s.color }} />
                         </span>
                         <div>
-                          <p className="text-[13px] font-semibold text-txt">{s.name}</p>
-                          <p className="font-mono text-[11px] text-faint">{s.meta}</p>
+                          <p className="text-[13px] font-semibold text-[#e8eaf4]">{s.name}</p>
+                          <p className="font-mono text-[11px] text-[#7d8699]">{s.meta}</p>
                         </div>
                       </div>
                       <span
@@ -209,7 +211,7 @@ export function Hero() {
                   {['LLMs', 'RAG', 'Voice AI', 'Quant', 'Full-stack', 'Product'].map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-line bg-surface px-2 py-1 font-mono text-[10px] text-muted"
+                      className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-1 font-mono text-[10px] text-[#9aa1b8]"
                     >
                       {t}
                     </span>
@@ -228,7 +230,7 @@ export function Hero() {
           className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4"
         >
           {heroStats.map((s) => (
-            <div key={s.label} className={cn('bg-ink-2 p-5 text-center sm:p-6')}>
+            <div key={s.label} className="bg-ink-2 p-5 text-center sm:p-6">
               <div className="text-gradient text-3xl font-extrabold sm:text-4xl">{s.value}</div>
               <p className="mt-1.5 text-xs leading-snug text-muted sm:text-[13px]">{s.label}</p>
             </div>

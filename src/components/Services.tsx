@@ -67,7 +67,7 @@ export function Services() {
           </p>
           <a
             href="#contact"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-heading px-5 py-3 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5"
           >
             Start a conversation <ArrowUpRight className="h-4 w-4" />
           </a>

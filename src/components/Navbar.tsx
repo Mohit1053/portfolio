@@ -120,7 +120,7 @@ export function Navbar() {
               </a>
               <a
                 href="#contact"
-                className="hidden items-center gap-1.5 rounded-full bg-gradient-to-r from-brand-2 via-cyan to-emerald px-4 py-2 text-sm font-semibold text-ink transition-transform hover:-translate-y-0.5 lg:inline-flex"
+                className="hidden items-center gap-1.5 rounded-full cta-grad px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5 lg:inline-flex"
               >
                 Let’s talk
                 <ArrowUpRight className="h-4 w-4" />
@@ -196,7 +196,7 @@ export function Navbar() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-2 via-cyan to-emerald px-4 py-3 text-sm font-semibold text-ink"
+                  className="inline-flex items-center justify-center gap-2 rounded-full cta-grad px-4 py-3 text-sm font-semibold"
                 >
                   Let’s talk <ArrowUpRight className="h-4 w-4" />
                 </a>

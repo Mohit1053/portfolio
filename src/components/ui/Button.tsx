@@ -20,7 +20,7 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    'text-ink bg-gradient-to-r from-brand-2 via-cyan to-emerald bg-[length:180%_180%] hover:bg-right hover:-translate-y-0.5 hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]',
+    'cta-grad bg-[length:180%_180%] hover:bg-right hover:-translate-y-0.5 hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]',
   outline: 'border border-line-2 text-txt hover:border-brand/60 hover:bg-surface-2 hover:-translate-y-0.5',
   ghost: 'text-muted hover:text-txt',
 }

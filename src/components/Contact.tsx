@@ -158,7 +158,7 @@ export function Contact() {
 
               <button
                 type="submit"
-                className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-2 via-cyan to-emerald bg-[length:180%_180%] px-5 py-3.5 text-sm font-semibold text-ink transition-all duration-300 hover:bg-right hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]"
+                className="group mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full cta-grad bg-[length:180%_180%] px-5 py-3.5 text-sm font-semibold transition-all duration-300 hover:bg-right hover:shadow-[0_16px_44px_-14px_rgba(124,92,255,0.7)]"
               >
                 <Send className="h-4 w-4" /> Send message
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
