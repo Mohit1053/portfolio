@@ -82,7 +82,7 @@ export function Navbar() {
           >
             <Monogram />
 
-            <div className="hidden items-center gap-1 lg:flex">
+            <div className="hidden items-center gap-0.5 xl:flex">
               {navItems.map((item) => {
                 const isActive = active === item.href.replace('#', '')
                 return (
@@ -120,7 +120,7 @@ export function Navbar() {
               </a>
               <a
                 href="#contact"
-                className="hidden items-center gap-1.5 rounded-full cta-grad px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5 lg:inline-flex"
+                className="hidden items-center gap-1.5 rounded-full cta-grad px-4 py-2 text-sm font-semibold transition-transform hover:-translate-y-0.5 xl:inline-flex"
               >
                 Let’s talk
                 <ArrowUpRight className="h-4 w-4" />
@@ -129,7 +129,7 @@ export function Navbar() {
                 ref={hamburgerRef}
                 type="button"
                 onClick={() => setOpen(true)}
-                className="grid h-10 w-10 place-items-center rounded-xl border border-line-2 text-heading lg:hidden"
+                className="grid h-10 w-10 place-items-center rounded-xl border border-line-2 text-heading xl:hidden"
                 aria-label="Open menu"
                 aria-expanded={open}
                 aria-controls="mobile-menu"
@@ -144,7 +144,7 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[60] lg:hidden"
+            className="fixed inset-0 z-[60] xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
