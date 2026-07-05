@@ -1,5 +1,7 @@
 # Mohit — Portfolio
 
+[![CI](https://github.com/Mohit1053/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Mohit1053/portfolio/actions/workflows/ci.yml)
+
 A fast, animated single-page portfolio built to win both **recruiters** (hire) and **clients** (freelance / agency). Positions Mohit as a one-stop AI partner across **Product, Engineering & Data**.
 
 Built with **React + TypeScript + Vite + Tailwind CSS v4 + Framer Motion**.
@@ -13,7 +15,19 @@ npm install
 npm run dev        # local dev at http://localhost:5173
 npm run build      # type-check + production build into /dist
 npm run preview    # preview the production build locally
+npm test           # build + Playwright smoke tests (headless)
 ```
+
+## Tests & CI
+
+A [Playwright](https://playwright.dev) smoke suite in [`tests/`](tests/) drives the real production build — page load (no uncaught errors), every section present, theme toggle + persistence, project modal open/close, category filter, nav scroll, contact form, résumé link, the 404 page, and the mobile menu drawer.
+
+```bash
+npm test           # runs headless against a preview build
+npm run test:ui    # interactive Playwright UI
+```
+
+GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) type-checks, builds, and runs the suite on every push and pull request.
 
 ---
 
