@@ -379,6 +379,10 @@ export type Project = {
   tags: string[]
   links?: ProjectLink[]
   featured?: boolean
+  /** Optional screenshot/thumbnail. Drop an image in public/ (e.g. '/shots/quant-lab.png',
+   *  16:9 works best) and set the path here to show it on the card + in the detail modal.
+   *  Omit to keep the clean icon-only card. */
+  image?: string
 }
 
 export const projects: Project[] = [

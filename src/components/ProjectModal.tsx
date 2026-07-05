@@ -97,6 +97,14 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
 
             {/* body */}
             <div className="overflow-y-auto p-6 sm:p-7">
+              {project.image && (
+                <img
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  className="mb-6 aspect-video w-full rounded-xl border border-line object-cover"
+                />
+              )}
+
               {project.metrics && project.metrics.length > 0 && (
                 <div
                   className="mb-6 grid gap-3"

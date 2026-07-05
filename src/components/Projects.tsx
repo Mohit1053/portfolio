@@ -24,12 +24,23 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -5 }}
       className={cn(
-        'group relative flex h-full flex-col rounded-2xl border p-5 text-left transition-colors',
+        'group relative flex h-full flex-col overflow-hidden rounded-2xl border p-5 text-left transition-colors',
         project.featured
           ? 'border-brand/30 bg-gradient-to-b from-brand/[0.07] to-transparent'
           : 'border-line bg-ink-2/50 hover:border-brand/40',
       )}
     >
+      {project.image && (
+        <div className="-mx-5 -mt-5 mb-4 border-b border-line">
+          <img
+            src={project.image}
+            alt=""
+            loading="lazy"
+            className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+        </div>
+      )}
+
       <div className="flex items-center justify-between">
         <span className="grid h-10 w-10 place-items-center rounded-xl border border-line bg-surface text-brand transition-colors group-hover:text-cyan">
           {Cat && <Cat className="h-5 w-5" />}
