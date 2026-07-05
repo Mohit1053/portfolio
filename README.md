@@ -63,8 +63,11 @@ Append an object to the `projects` array in `content.ts`:
   metrics: [{ value: '10x', label: 'faster' }],   // optional, up to 3 look best
   tags: ['Python', 'LLMs', 'FastAPI'],
   links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/...' }], // optional
+  image: '/shots/my-project.png',       // optional — 16:9 screenshot in public/; shows on card + modal
 }
 ```
+
+Drop project screenshots in `public/` (e.g. `public/shots/`) and reference them with an absolute path (`/shots/name.png`). Omit `image` to keep the clean icon-only card.
 
 Valid `category` values are in `projectCategories` (`AI Products`, `Voice AI`, `Quant & Finance`, `NLP & RAG`, `Computer Vision`, `Automation`, `Research`). Add a new category by adding it to that list **and** giving it an icon in `src/lib/icons.tsx` (`categoryIcon`).
 
