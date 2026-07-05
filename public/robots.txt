@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://portfolio-rosy-eight-41.vercel.app/sitemap.xml
