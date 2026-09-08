@@ -119,14 +119,22 @@ Edit the HTML in `scripts/og.mjs` to change it.
 
 `vercel.json` sets security headers + long-lived caching for hashed assets, and `public/404.html` is a branded not-found page — both applied automatically on deploy.
 
-### Option B — GitHub Pages
+### Option B — GitHub Pages (free backup, already automated)
 
-```bash
-npm run build
-npx gh-pages -d dist        # or push /dist to the gh-pages branch
-```
+Every push to `main` also publishes to **https://mohit1053.github.io/portfolio/** via
+[`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml). No setup needed.
 
-If serving from `https://<user>.github.io/<repo>/` (a sub-path), set `base: '/<repo>/'` in `vite.config.ts`. For `mohit1053.github.io` (root), leave `base: '/'`.
+How the two hosts coexist:
+
+- Vercel serves at `/`; GitHub Pages serves the project at `/portfolio/`.
+- The Pages workflow builds with `DEPLOY_TARGET=pages`, which switches Vite's `base` to `/portfolio/`
+  (see [`vite.config.ts`](vite.config.ts)). Vercel builds without it and stays at `/`.
+- Runtime asset paths (résumé, photo, project images) go through [`asset()`](src/lib/asset.ts),
+  which prefixes `import.meta.env.BASE_URL` — a no-op on Vercel, correct on Pages.
+- `canonical` / `og:url` intentionally point at the **Vercel** URL so search engines treat it as the
+  primary and don't flag the mirror as duplicate content.
+
+Both hosts are free forever. Vercel is the one to share; Pages is the safety net.
 
 ---
 

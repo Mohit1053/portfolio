@@ -4,6 +4,7 @@ import { FiGithub as Github, FiLinkedin as Linkedin } from 'react-icons/fi'
 import { heroStats, profile } from '../data/content'
 import { Aurora } from './ui/Aurora'
 import { Typewriter } from './ui/Typewriter'
+import { asset } from '../lib/asset'
 
 const shipStatus = [
   { name: 'Voice AI Calling Platform', state: 'live', meta: '36K+ calls · <700ms', color: '#34d399' },
@@ -51,7 +52,7 @@ export function Hero() {
               <span className="relative inline-grid shrink-0">
                 <span className="grid h-14 w-14 place-items-center overflow-hidden rounded-2xl ring-gradient">
                   {profile.photo ? (
-                    <img src={profile.photo} alt="Mohit" className="h-full w-full rounded-2xl object-cover" />
+                    <img src={asset(profile.photo)} alt="Mohit" className="h-full w-full rounded-2xl object-cover" />
                   ) : (
                     <span className="font-display text-xl font-bold text-heading">M</span>
                   )}
@@ -112,7 +113,7 @@ export function Hero() {
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
-                href={profile.resume}
+                href={asset(profile.resume)}
                 download
                 className="inline-flex items-center gap-2 rounded-full border border-line-2 px-5 py-3 text-sm font-semibold text-txt transition-all duration-300 hover:-translate-y-0.5 hover:border-brand/60 hover:bg-surface-2"
               >

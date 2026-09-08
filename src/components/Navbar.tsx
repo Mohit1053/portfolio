@@ -5,6 +5,7 @@ import { navItems, profile } from '../data/content'
 import { useActiveSection, useScrolled } from '../lib/useScroll'
 import { ThemeToggle } from './ui/ThemeToggle'
 import { cn } from '../lib/cn'
+import { asset } from '../lib/asset'
 
 const sectionIds = navItems.map((n) => n.href.replace('#', ''))
 
@@ -111,7 +112,7 @@ export function Navbar() {
             <div className="flex items-center gap-2">
               <ThemeToggle />
               <a
-                href={profile.resume}
+                href={asset(profile.resume)}
                 download
                 className="hidden items-center gap-1.5 rounded-full border border-line-2 px-3.5 py-2 text-sm font-medium text-txt transition-colors hover:border-brand/60 hover:bg-surface-2 sm:inline-flex"
               >
@@ -186,7 +187,7 @@ export function Navbar() {
               ))}
               <div className="mt-auto flex flex-col gap-3 pt-6">
                 <a
-                  href={profile.resume}
+                  href={asset(profile.resume)}
                   download
                   onClick={() => setOpen(false)}
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-line-2 px-4 py-3 text-sm font-semibold text-txt"

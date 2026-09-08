@@ -9,6 +9,7 @@ import { Section } from './ui/Section'
 import { SectionHeading } from './ui/SectionHeading'
 import { cn } from '../lib/cn'
 import { ProjectModal } from './ProjectModal'
+import { asset } from '../lib/asset'
 
 function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
   const Cat = categoryIcon[project.category]
@@ -33,7 +34,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
       {project.image && (
         <div className="-mx-5 -mt-5 mb-4 border-b border-line">
           <img
-            src={project.image}
+            src={asset(project.image)}
             alt=""
             loading="lazy"
             className="aspect-video w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"

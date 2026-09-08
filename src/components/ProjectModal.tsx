@@ -4,6 +4,7 @@ import { X, ArrowUpRight, Sparkles } from 'lucide-react'
 import { FiGithub as Github } from 'react-icons/fi'
 import type { Project } from '../data/content'
 import { categoryIcon } from '../lib/icons'
+import { asset } from '../lib/asset'
 
 export function ProjectModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null)
@@ -99,7 +100,7 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
             <div className="overflow-y-auto p-6 sm:p-7">
               {project.image && (
                 <img
-                  src={project.image}
+                  src={asset(project.image)}
                   alt={`${project.title} screenshot`}
                   className="mb-6 aspect-video w-full rounded-xl border border-line object-cover"
                 />

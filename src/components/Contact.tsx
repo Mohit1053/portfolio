@@ -6,6 +6,7 @@ import { profile } from '../data/content'
 import { Section } from './ui/Section'
 import { Reveal } from './ui/Reveal'
 import { Aurora } from './ui/Aurora'
+import { asset } from '../lib/asset'
 
 const engagements = ['Hire me (full-time)', 'Freelance / project work', 'Advisory / fractional AI-PM', 'Just saying hi']
 
@@ -130,7 +131,7 @@ export function Contact() {
                   <Linkedin className="h-5 w-5" />
                 </a>
                 <a
-                  href={profile.resume}
+                  href={asset(profile.resume)}
                   download
                   className="inline-flex items-center gap-2 rounded-xl border border-line px-4 py-2.5 text-sm font-medium text-txt transition-all hover:-translate-y-0.5 hover:border-brand/50"
                 >
