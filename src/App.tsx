@@ -53,7 +53,8 @@ export default function App() {
         </main>
         <Footer />
         <ScrollToTop />
-        <Analytics />
+        {/* Vercel Analytics only exists on Vercel; skip it on the GitHub Pages mirror. */}
+        {!import.meta.env.BASE_URL.startsWith('/portfolio') && <Analytics />}
       </div>
     </MotionConfig>
   )
