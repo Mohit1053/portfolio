@@ -1,17 +1,10 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight, Download, Mail, Phone, Sparkles } from 'lucide-react'
 import { FiGithub as Github, FiLinkedin as Linkedin } from 'react-icons/fi'
-import { heroStats, profile } from '../data/content'
+import { currentlyShipping, heroStats, profile } from '../data/content'
 import { Aurora } from './ui/Aurora'
 import { Typewriter } from './ui/Typewriter'
 import { asset } from '../lib/asset'
-
-const shipStatus = [
-  { name: 'Voice AI Calling Platform', state: 'live', meta: '36K+ calls · <700ms', color: '#34d399' },
-  { name: 'ET Home-Feed Personalisation', state: 'shipping', meta: '−80% cost · −74% latency', color: '#22d3ee' },
-  { name: 'Quant Research Lab', state: 'running', meta: '1.03 Sharpe · 68% win', color: '#7c5cff' },
-  { name: 'AI Automation Suite', state: 'in prod', meta: '500K+ actions run', color: '#fbbf24' },
-]
 
 const fade = {
   hidden: { opacity: 0, y: 22 },
@@ -177,7 +170,7 @@ export function Hero() {
                 </div>
 
                 <div className="space-y-2.5">
-                  {shipStatus.map((s, i) => (
+                  {currentlyShipping.map((s, i) => (
                     <motion.div
                       key={s.name}
                       initial={{ opacity: 0, x: 16 }}

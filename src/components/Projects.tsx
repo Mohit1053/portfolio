@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Plus, Star } from 'lucide-react'
+import { ChevronDown, Plus, Star } from 'lucide-react'
 import { FiGithub as Github } from 'react-icons/fi'
 import { projectCategories, projects } from '../data/content'
 import type { Project, ProjectCategory } from '../data/content'
@@ -70,7 +70,7 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
         </div>
       )}
 
-      <div className="mt-auto flex items-center justify-between pt-5">
+      <div className="mt-auto flex items-end justify-between gap-3 pt-5">
         <div className="flex flex-wrap gap-1.5">
           {project.tags.slice(0, 3).map((t) => (
             <span key={t} className="rounded-md bg-surface px-2 py-0.5 font-mono text-[10px] text-muted">
@@ -78,23 +78,36 @@ function Card({ project, onOpen }: { project: Project; onOpen: () => void }) {
             </span>
           ))}
         </div>
-        <div className="flex items-center gap-2 text-muted">
+        <div className="flex shrink-0 items-center gap-2 text-muted">
           {gh && <Github className="h-4 w-4" />}
-          <span className="font-mono text-[11px] text-brand transition-colors group-hover:text-cyan">details →</span>
+          <span className="whitespace-nowrap font-mono text-[11px] text-brand transition-colors group-hover:text-cyan">
+            details →
+          </span>
         </div>
       </div>
     </motion.button>
   )
 }
 
+/** How many cards the unfiltered grid shows before "Show all". */
+const INITIAL_COUNT = 9
+
 export function Projects() {
   const [category, setCategory] = useState<ProjectCategory>('All')
   const [active, setActive] = useState<Project | null>(null)
+  const [showAll, setShowAll] = useState(false)
 
   const filtered = useMemo(
     () => (category === 'All' ? projects : projects.filter((p) => p.category === category)),
     [category],
   )
+  const canCollapse = category === 'All' && filtered.length > INITIAL_COUNT
+  const visible = canCollapse && !showAll ? filtered.slice(0, INITIAL_COUNT) : filtered
+
+  function toggleShowAll() {
+    if (showAll) document.getElementById('work')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setShowAll((v) => !v)
+  }
 
   return (
     <Section id="work">
@@ -137,11 +150,28 @@ export function Projects() {
       {/* grid */}
       <motion.div layout className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <AnimatePresence mode="popLayout">
-          {filtered.map((p) => (
+          {visible.map((p) => (
             <Card key={p.id} project={p} onOpen={() => setActive(p)} />
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {canCollapse && (
+        <div className="mt-8 flex justify-center">
+          <button
+            type="button"
+            onClick={toggleShowAll}
+            aria-expanded={showAll}
+            className="inline-flex items-center gap-2 rounded-full border border-line-2 px-5 py-2.5 text-sm font-semibold text-txt transition-colors hover:border-brand/60 hover:bg-surface-2"
+          >
+            {showAll ? 'Show fewer' : `Show all ${filtered.length} projects`}
+            <ChevronDown
+              aria-hidden
+              className={cn('h-4 w-4 transition-transform duration-300', showAll && 'rotate-180')}
+            />
+          </button>
+        </div>
+      )}
 
       {/* more-to-come note */}
       <div className="mt-8 flex items-center justify-center gap-3 text-muted">

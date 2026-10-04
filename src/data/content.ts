@@ -60,6 +60,18 @@ export const heroStats: Stat[] = [
 ]
 
 /* ----------------------------------------------------------------------------
+   HERO "CURRENTLY SHIPPING" CONSOLE — keep this list current
+   (state is the badge text; color is the dot/badge colour on the dark console)
+   ---------------------------------------------------------------------------- */
+export type ShipStatus = { name: string; state: string; meta: string; color: string }
+export const currentlyShipping: ShipStatus[] = [
+  { name: 'Campaign Voice Agents', state: 'live', meta: 'real subscriber calls', color: '#34d399' },
+  { name: 'Newsroom AI-Copy Gate', state: 'shadow', meta: '≤1% false flags per scorer', color: '#22d3ee' },
+  { name: 'R2C Research Platform', state: 'building', meta: '18 repos · 20+ contributors', color: '#7c5cff' },
+  { name: 'Subscription Lead Engine', state: 'daily', meta: 'calibrated ranked lead list', color: '#fbbf24' },
+]
+
+/* ----------------------------------------------------------------------------
    CREDIBILITY BAND — places I've genuinely built & shipped (honest social proof)
    ---------------------------------------------------------------------------- */
 export type Affiliation = { name: string; note: string }
@@ -294,9 +306,10 @@ export const experiences: Experience[] = [
       'Lead a cross-functional team of ~10 (AI, product & data) across 20+ initiatives, owning AI products from strategy to production.',
     points: [
       'Own the AI-powered home-feed personalisation product — LLM content enrichment, scoring and user-affinity ranking — delivering an 80% per-article cost cut and 74% latency reduction across user cohorts.',
-      'Architected and shipped a microservices voice-AI calling platform (streaming ASR + LLM + TTS) to production: 36K+ live calls at <700ms latency, tripling outbound volume.',
-      'Built an agentic-RAG market-intelligence platform fusing fundamental, technical and NLP-sentiment signals over a 131K-record backtest — adopted daily by the internal trading desk.',
-      'Established the AI evaluation, monitoring and governance framework (latency, accuracy, cost) across all shipped features.',
+      'Architected and shipped a microservices voice-AI calling platform (streaming ASR + LLM + TTS) to production: 36K+ live calls at <700ms latency, tripling outbound volume. Now lead the live campaign voice agents and their rebuild into one shared runtime.',
+      'Built a newsroom AI-copy detection gate (two calibrated detectors at ≤1% false flags each, released in shadow mode) and the subscription-propensity model behind the daily marketing lead list.',
+      'Lead the team shipping AI video (micro-dramas, masterclass clips, ad kits), a conversational ad-creative studio, a local-LLM event chatbot and creator-video verification.',
+      'Built an agentic-RAG market-intelligence platform over a 131K-record backtest, adopted daily by the internal trading desk, and set up AI evaluation, monitoring and governance across shipped features.',
     ],
     tags: ['Product Strategy', 'LLMs', 'Voice AI', 'Agentic RAG', 'Team Leadership'],
   },
@@ -309,11 +322,11 @@ export const experiences: Experience[] = [
     summary:
       'Run an independent AI studio delivering production AI products for clients — freelance and agency engagements, end-to-end.',
     points: [
-      'Founded R2C (Research-to-Commercialisation): a full-stack AI platform matching academic research to industry needs via LLM semantic matching, with role-based access and meeting workflows.',
-      'Ship GenAI products for clients — document-extraction pipelines, branded PDF automation, RAG assistants and AI video generation — deployed on GCP / Cloud Run.',
-      'Bring in a trusted cross-functional team to scale delivery when a project demands more than one builder.',
+      'Founded R2C (Research-to-Commercialisation) and lead a 20+ contributor team building a multi-service platform that turns research papers into commercial opportunities — ingestion, patent and industry-fit agents, readiness scoring, due diligence and investor pitches. Built its social distribution engine myself.',
+      'Deliver AI engagements for clients — from a 159-opportunity AI assessment and leadership training to RFQ automation, a legal case-file pipeline and a live travel website (anonymised under Client work).',
+      'Ship GenAI products such as document-extraction pipelines, branded PDF automation and RAG assistants on GCP / Cloud Run, and bring in a trusted cross-functional team when a project needs more than one builder.',
     ],
-    tags: ['Founder', 'GenAI', 'Full-Stack', 'Client Delivery', 'GCP'],
+    tags: ['Founder', 'GenAI', 'Full-Stack', 'Client Delivery', 'AI Strategy', 'GCP'],
   },
   {
     role: 'ML Engineering Intern',
@@ -358,6 +371,7 @@ export const projectCategories = [
   'All',
   'AI Products',
   'Voice AI',
+  'Generative Media',
   'Quant & Finance',
   'NLP & RAG',
   'Computer Vision',
@@ -428,7 +442,107 @@ export const projects: Project[] = [
       { value: '3×', label: 'Volume' },
     ],
     tags: ['Whisper', 'TTS', 'LLM', 'Realtime', 'Microservices'],
-    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/ai-caller' }],
+  },
+  {
+    id: 'r2c',
+    title: 'R2C — Research-to-Commercialisation',
+    category: 'AI Products',
+    year: '2024–26',
+    featured: true,
+    tagline: 'A multi-service AI platform that turns research papers into commercial opportunities.',
+    description:
+      'A platform I founded and lead. Papers are ingested into structured data, enriched by specialist agents — patent awareness, industry fit, gap analysis, commercial-readiness scoring — and turned into investor pitches, licensee due diligence and recommendations. Built by a team of 20+ contributors.',
+    highlights: [
+      '18 active repos spanning ingestion, enrichment agents, scoring, outputs and the web app.',
+      'I set the product direction and built the social distribution engine myself.',
+      'Investor pitches pass a 3-tier quality gate: schema validation, factual-grounding checks and an LLM judge.',
+    ],
+    metrics: [
+      { value: '18', label: 'Active repos' },
+      { value: '20+', label: 'Contributors' },
+    ],
+    tags: ['LLM Agents', 'LangGraph', 'PostgreSQL', 'React 19', 'Recommender Systems'],
+    links: [{ label: 'Read the case study', href: '#case-study' }],
+  },
+  {
+    id: 'editorial-gate',
+    title: 'Newsroom AI-Copy Detection Gate',
+    category: 'NLP & RAG',
+    year: '2026',
+    featured: true,
+    tagline: 'Flags undeclared AI-written copy before it is published.',
+    description:
+      'A pre-publication gate for a national newsroom. It reads only the final submitted text — no keystroke or activity tracking — and routes undeclared AI-written copy, chatbot leftovers and hidden-character evasion to an editor with evidence. Writers see reasons, never scores.',
+    highlights: [
+      'Two zero-shot detectors in union, each calibrated to ≤1% false flags on pre-ChatGPT staff copy (≤2% combined).',
+      'Character-forensics rules catch look-alike and hidden-character evasion.',
+      'Thresholds are pinned to the exact scorer and text-prep version, so calibration cannot silently drift.',
+      'Fail-closed data egress: unpublished copy never leaves without a zero-retention contract.',
+      'Released in shadow mode before any enforcement.',
+    ],
+    metrics: [
+      { value: '≤1%', label: 'False flags / scorer' },
+      { value: '≤2%', label: 'Combined' },
+    ],
+    tags: ['NLP', 'AI Detection', 'Calibration', 'FastAPI', 'Responsible AI'],
+  },
+  {
+    id: 'voice-runtime',
+    title: 'Campaign Voice Agents & Shared Runtime',
+    category: 'Voice AI',
+    year: '2026',
+    tagline: 'Live outbound voice agents — being rebuilt so a new campaign is data, not code.',
+    description:
+      'I lead the team running live voice agents for subscription win-back, wellness and event campaigns, and their rebuild (now in staging) into one shared runtime: a new campaign is a versioned script plus a knowledge snapshot, published as an immutable agent version — no new codebase.',
+    highlights: [
+      'Live agents handle real subscriber calls, answering objections from a curated knowledge base.',
+      'Speech runs CPU-only, in memory; voices are pre-rendered offline, so live calls make no TTS API calls.',
+      'Shared-runtime catalogue: 3 products × 8 campaign agents, 5 written from scratch for new use-cases.',
+      '136 automated tests, a control API, a real-time call bridge and CRM sync.',
+    ],
+    metrics: [
+      { value: '3', label: 'Live campaign bots' },
+      { value: '8', label: 'Agents in new runtime' },
+    ],
+    tags: ['Voice AI', 'Speech-to-Text', 'TTS', 'PostgreSQL', 'Platform'],
+  },
+  {
+    id: 'propensity',
+    title: 'Subscription Propensity & Lead Engine',
+    category: 'AI Products',
+    year: '2026',
+    tagline: 'Ranks engaged readers by likelihood to subscribe — one daily lead list for marketing.',
+    description:
+      'A production ML package for a premium news subscription. It scores identified, engaged users and emits one daily ranked lead list across acquisition and win-back. It drives real marketing spend, so correctness is enforced by code rather than assumed.',
+    highlights: [
+      'Two calibrated LightGBM engines — never-subscribed and lapsed — interleaved into one ranked list.',
+      'Leakage-as-code and a train/serve parity hash, both asserted at serve time.',
+      'Promotion gate: only a PASS on an AUC confidence floor, calibration and leakage checks can go live.',
+      'Versioned model registry with atomic promote and rollback.',
+    ],
+    tags: ['LightGBM', 'scikit-learn', 'Calibration', 'MLOps', 'Python'],
+  },
+  {
+    id: 'cohortx',
+    title: 'CohortX Challenge — 3rd Place',
+    category: 'NLP & RAG',
+    year: '2026',
+    featured: true,
+    tagline: 'Clinical-trial eligibility criteria → structured semantic triples with an LLM.',
+    description:
+      'Turn the free-text eligibility criteria of a clinical trial into Subject–relation–Object triples. Retrieval-augmented few-shot prompting, no fine-tuning: each criterion gets four worked examples chosen by Maximal Marginal Relevance over TF-IDF, plus a fixed schema and a relation vocabulary distilled from the training data. Runs entirely on CPU.',
+    highlights: [
+      '3rd of 9 validated teams — 0.82 public / 0.75 private leaderboard.',
+      'Rule-based baseline 0.64 → fixed 2-shot 0.76 → retrieval 0.81 → MMR 0.82.',
+      '~160 scored submissions across 45 configurations, with every ablation recorded.',
+      'MMR beat plain top-k by trading a little similarity for diverse annotation styles.',
+    ],
+    metrics: [
+      { value: '3rd', label: 'of 9 teams' },
+      { value: '0.82', label: 'Public LB' },
+    ],
+    tags: ['LLMs', 'Few-shot', 'Retrieval', 'Information Extraction', 'Healthcare NLP'],
+    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/cohortx-task-2' }],
   },
   {
     id: 'quant-lab',
@@ -450,7 +564,43 @@ export const projects: Project[] = [
       { value: '1.5K+', label: 'Equities' },
     ],
     tags: ['PyTorch', 'Transformers', 'TFT', 'MLflow', 'Backtesting'],
-    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/quant-lab' }],
+  },
+  {
+    id: 'ai-video',
+    title: 'AI Video Studio',
+    category: 'Generative Media',
+    year: '2026',
+    featured: true,
+    tagline: 'AI micro-dramas, masterclass clips and ad creatives — on one shared engine.',
+    description:
+      'I lead the AI video team behind Hinglish micro-dramas, a health-event video line, short product marketing videos, masterclass clips and ad creative kits — all built on one layered engine where models are swappable through config and a new project is just a folder. I built the masterclass clipper.',
+    highlights: [
+      'Masterclass clipper (my build): 7–8h recordings → share-ready 30–90s clips at ~$4–6 per source video.',
+      'Transcription → multi-LLM arc analysis → face-tracking reframe → motion-graphics composition.',
+      'Engine registry: no stage names a vendor, so swapping a model is a one-line config change.',
+      'GPU-heavy stages are offloaded to cloud GPUs; everything else runs from a laptop.',
+    ],
+    metrics: [
+      { value: '$4–6', label: 'Per 8h video' },
+      { value: '30–90s', label: 'Clip length' },
+    ],
+    tags: ['Video Generation', 'Speech-to-Text', 'MediaPipe', 'LLMs', 'Python'],
+  },
+  {
+    id: 'creative-studio',
+    title: 'AI Ad-Creative Studio',
+    category: 'Generative Media',
+    year: '2026',
+    tagline: 'A conversational studio over an automated ad-creative pipeline.',
+    description:
+      'The campaign studio that makes an automated creative pipeline usable by marketers. Two reference images, an optional logo and a brief go in; a reviewed 1:1 poster plus 9:16, 4:5 and 1.91:1 variants come out — through a conversation, not a form.',
+    highlights: [
+      'Each creative is a thread: prompt, plain-language progress, results and follow-up edits in one place.',
+      'An edit loop refines approved posters without starting over.',
+      'Spend guardrails: uploads are checked by a vision pass before any paid generation.',
+      'The pipeline underneath runs an AI quality gate at every step — no model grades its own work — with one human approval.',
+    ],
+    tags: ['React', 'Express', 'PostgreSQL', 'Socket.IO', 'GenAI'],
   },
   {
     id: 'market-intel',
@@ -471,28 +621,86 @@ export const projects: Project[] = [
       { value: '14+', label: 'Fundamental metrics' },
     ],
     tags: ['Agentic RAG', 'LangChain', 'FastAPI', 'Finance', 'NLP'],
-    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/market-intelligence-platform' }],
   },
   {
-    id: 'ai-video',
-    title: 'AI Video Generation — Masterclass Clipper',
-    category: 'AI Products',
+    id: 'finance-rag',
+    title: 'Finance Agentic RAG',
+    category: 'NLP & RAG',
     year: '2026',
-    featured: true,
-    tagline: 'Turns 7–8h recordings into share-ready 30–90s clips, automatically.',
+    tagline: 'Multi-agent RAG for financial documents, designed to verify every number.',
     description:
-      'A transcript-first pipeline that transcribes long masterclasses, uses multiple LLMs to find the best pedagogical moments, reframes with face-tracking and composes motion-graphics clips.',
+      'A finance-focused retrieval-augmented system designed around accuracy and traceability: a five-agent chain plans, retrieves, reasons, verifies and reports, cross-checking every numerical value against its source document and keeping a full audit trail.',
     highlights: [
-      'Transcription → multi-LLM arc analysis → face-tracking reframe → motion-graphics composition.',
-      '~$4–6 to process an 8-hour source video.',
-      '3K–9K clips generated per 100 source videos.',
+      'Planner → Retriever → Reasoning → Verifier → Reporter agent chain.',
+      'Multi-modal ingestion: text, tables, charts and scanned images.',
+      'A knowledge graph of financial entities and their relationships.',
+      'Indian-market context built in: SEBI, RBI, NSE/BSE and Ind-AS.',
     ],
-    metrics: [
-      { value: '$4–6', label: 'Per 8h video' },
-      { value: '30–90s', label: 'Clip length' },
+    tags: ['Agentic RAG', 'Multi-Agent', 'Knowledge Graph', 'Finance', 'Python'],
+    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/finance-rag-system' }],
+  },
+  {
+    id: 'numerai',
+    title: 'Numerai Tournament Pipeline',
+    category: 'Quant & Finance',
+    year: '2026',
+    tagline: 'A fully automated pipeline competing in the Numerai stock-market tournament.',
+    description:
+      'An end-to-end pipeline for the Numerai hedge-fund tournament: ensembles trained on cloud GPUs and synced to an always-on server that submits predictions automatically each round and retrains weekly, with a fallback model that runs on Numerai’s own infrastructure.',
+    highlights: [
+      '4-target ensemble (30K trees on the full dataset) trained on cloud GPUs.',
+      'Feature neutralisation to reduce exposure to any single feature.',
+      'Automated submissions every round, weekly retraining and health monitoring.',
+      'A model-upload failsafe that runs on Numerai’s infrastructure.',
     ],
-    tags: ['Deepgram', 'Faster-Whisper', 'Claude', 'Gemini', 'MediaPipe', 'Remotion'],
-    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/AI-Video-generation' }],
+    tags: ['Gradient Boosting', 'Ensembles', 'Feature Neutralisation', 'MLOps', 'Quant'],
+  },
+  {
+    id: 'social-engine',
+    title: 'R2C Social Distribution Engine',
+    category: 'Automation',
+    year: '2026',
+    tagline: 'Trend signals in, cited content out — published, measured and re-weighted automatically.',
+    description:
+      'An end-to-end research-to-content loop I built for R2C: it ingests signals, ranks topics by momentum, writes persona-matched content along a marketing funnel with cited sources, publishes across platforms and feeds engagement back into what it writes next.',
+    highlights: [
+      'Signals from Reddit, arXiv, YouTube and Google Trends, clustered and ranked by momentum.',
+      'Funnel-stage (AIDA) content with persona matching and source-cited evidence.',
+      'Publishes to Reddit, LinkedIn and X with per-platform hashtags, pre-flight checks and staggered posting.',
+      'Engagement tracking and UTM attribution feed back into the strategy.',
+    ],
+    tags: ['FastAPI', 'PostgreSQL', 'Gemini', 'React', 'Docker'],
+  },
+  {
+    id: 'marathon-chatbot',
+    title: 'Event Pre-Sale Chatbot on a Local LLM',
+    category: 'NLP & RAG',
+    year: '2026',
+    tagline: 'A grounded event chatbot with no cloud LLM — and a deterministic fallback.',
+    description:
+      'I led the team behind a pre-sale chatbot for a city-marathon event. It answers from a living knowledge doc that is re-indexed on every change, generates on a small model running on the host itself, verifies every answer against its source passage and captures leads.',
+    highlights: [
+      'Embedding retrieval with a measured similarity floor as the scope gate.',
+      'Generation on a ~1B-parameter local model — no cloud LLM.',
+      'Every generated answer is verified against the passage it came from.',
+      'A deterministic BM25 + intent fallback whenever the model is busy, slow or down.',
+    ],
+    tags: ['RAG', 'pgvector', 'Local LLM', 'BM25', 'FastAPI'],
+  },
+  {
+    id: 'creator-verification',
+    title: 'Creator Video Verification',
+    category: 'Computer Vision',
+    year: '2026',
+    tagline: 'Approves or rejects creator videos against a fixed rulebook — fail-closed.',
+    description:
+      'I led the team behind an automated check for a creators programme: it extracts everything said and everything shown in a video, tests both against a fixed rule set and returns approved or rejected — nothing in between.',
+    highlights: [
+      'Speech-to-text and one-frame-per-second OCR extracted concurrently, then analysed in parallel.',
+      'First rejection wins — the other analysis is cancelled, but both contents are still recorded.',
+      'Unable to check is not a verdict: any extraction failure raises, so nothing unreviewed is approved.',
+    ],
+    tags: ['Speech-to-Text', 'OCR', 'ffmpeg', 'Content Moderation', 'Python'],
   },
   {
     id: 'hodophile',
@@ -524,21 +732,6 @@ export const projects: Project[] = [
     ],
     tags: ['LangChain', 'ChromaDB', 'RAG', 'Finance'],
     links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/Cement-Concall-RAG' }],
-  },
-  {
-    id: 'r2c',
-    title: 'R2C — Research-to-Commercialisation',
-    category: 'AI Products',
-    year: '2024–26',
-    tagline: 'Full-stack AI platform matching academic research to industry.',
-    description:
-      'A platform I founded that maps research abstracts to industry problem statements using LLM semantic matching, wrapped in a modern web app with role-based access, study exploration and meeting-request workflows.',
-    highlights: [
-      'LLM semantic-matching backend (Llama / Mistral).',
-      'React 19 + TypeScript + Firebase frontend with role-based access.',
-      'End-to-end delivery with E2E test coverage.',
-    ],
-    tags: ['React 19', 'TypeScript', 'Firebase', 'Llama', 'Mistral'],
   },
   {
     id: 'classify-image',
@@ -585,22 +778,20 @@ export const projects: Project[] = [
       'Bulk generation with quality controls.',
     ],
     tags: ['LLM Orchestration', 'Qwen', 'Content'],
-    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/multi-llm-content-pipeline' }],
   },
   {
     id: 'fundamental-indicators',
     title: 'Fundamental Indicators Toolkit',
     category: 'Quant & Finance',
     year: '2025',
-    tagline: 'Open-source scoring & analysis toolkit for Indian equities.',
+    tagline: 'Scoring & analysis toolkit for Indian equities.',
     description:
       'A professional-grade toolkit computing a 14-metric fundamental score, 26+ technical indicators and 35+ cyclical pattern detectors, with bulk NIFTY50/500 analysis and Excel report generation.',
     highlights: [
       '14-metric weighted scoring + 26+ technical indicators.',
       'Bulk NIFTY50/500 analysis with automated Excel reports.',
     ],
-    tags: ['Python', 'pandas', 'Technical Analysis', 'Open Source'],
-    links: [{ label: 'GitHub', href: 'https://github.com/Mohit1053/Fundamental_Indicators' }],
+    tags: ['Python', 'pandas', 'Technical Analysis', 'Equity Research'],
   },
   {
     id: 'space-debris',
@@ -631,6 +822,103 @@ export const projects: Project[] = [
     ],
     metrics: [{ value: '+9 F1', label: 'NumGLUE' }],
     tags: ['BERT', 'NLP', 'ONNX', 'Quantisation'],
+  },
+]
+
+/* ----------------------------------------------------------------------------
+   R2C FOUNDER CASE STUDY — the flagship section under the project grid
+   ---------------------------------------------------------------------------- */
+export type CaseStage = { step: string; title: string; desc: string; parts: string[] }
+export const r2cCaseStudy = {
+  title: 'R2C — from research paper to',
+  titleAccent: 'commercial opportunity',
+  lead: 'Most research never leaves the paper it is published in. R2C reads a paper the way a technology-transfer office would — what is it, who could use it, how ready is it, what is missing — and turns the answer into something an industry partner or investor can act on.',
+  stats: [
+    { value: '18', label: 'Active repos' },
+    { value: '20+', label: 'Contributors' },
+    { value: '0–100', label: 'Readiness score' },
+    { value: '2024', label: 'Founded' },
+  ] as Stat[],
+  stages: [
+    {
+      step: '01',
+      title: 'Ingest',
+      desc: 'PDF papers become structured metadata, a hierarchical section index and pre-generated Q&A.',
+      parts: ['Ingestion pipeline', 'A/B-tested extraction'],
+    },
+    {
+      step: '02',
+      title: 'Enrich',
+      desc: 'Specialist agents read the stored paper: patent and IP awareness, industry fit and concrete use-cases, weakest-link gaps.',
+      parts: ['IP / patent agent', 'Industry fit', 'Gap analysis', 'Knowledge graph'],
+    },
+    {
+      step: '03',
+      title: 'Score',
+      desc: 'A 0–100 Commercial Readiness Score fusing technology, manufacturing, market and commercial readiness pillars.',
+      parts: ['TRL', 'MRL', 'Market', 'Commercial'],
+    },
+    {
+      step: '04',
+      title: 'Act',
+      desc: 'Investor-ready pitches behind a 3-tier quality gate, automated due diligence on prospective licensees, and recommendations.',
+      parts: ['Pitch generation', 'Due diligence', 'Two-tower recommender'],
+    },
+    {
+      step: '05',
+      title: 'Reach',
+      desc: 'A web app and backend-for-frontend for researchers and partners, plus a social engine that publishes findings.',
+      parts: ['Web app + BFF', 'Social engine'],
+    },
+  ] as CaseStage[],
+  role: [
+    'Founded R2C and own its product direction and roadmap.',
+    'Lead a team of 20+ contributors across 18 active repos.',
+    'Built the social distribution engine end to end, and contribute to the web app and core platform.',
+  ],
+  tech: ['Python', 'FastAPI', 'LangGraph', 'PostgreSQL', 'MongoDB', 'FAISS', 'React 19', 'TypeScript', 'Tailwind v4'],
+}
+
+/* ----------------------------------------------------------------------------
+   CLIENT WORK — anonymised engagements delivered through the independent AI studio.
+   Keep client names out unless a client has agreed to be named.
+   ---------------------------------------------------------------------------- */
+export type ClientEngagement = { sector: string; title: string; summary: string; tags: string[] }
+export const clientEngagements: ClientEngagement[] = [
+  {
+    sector: 'Industrial B2B',
+    title: 'AI-assisted RFQ processing',
+    summary:
+      'Built AI-assisted request-for-quote processing, run through daily stand-ups toward a phased go-live, and supported deployment of the client’s sales tooling.',
+    tags: ['Document AI', 'Automation', 'Delivery'],
+  },
+  {
+    sector: 'Legal services',
+    title: 'Case-file intelligence pipeline',
+    summary:
+      'An ingestion and case-analysis pipeline over a 41,806-file legal archive (38 GB) — SFTP extraction, a documented data model and runbooks.',
+    tags: ['Data Engineering', 'Document AI', 'Legal'],
+  },
+  {
+    sector: 'Multi-business group',
+    title: 'AI & automation opportunity assessment',
+    summary:
+      '159 AI opportunities mapped across 11 functions, a top 10 with business cases and a roadmap covering training and governance — plus an “AI Demystified” session for leadership.',
+    tags: ['AI Strategy', 'Consulting', 'Training'],
+  },
+  {
+    sector: 'Travel-led startup',
+    title: 'Website launch & technical roadmap',
+    summary:
+      'Built and launched the public travel website, and wrote the staged technical proposals from MVP through Phase 2.',
+    tags: ['Web', 'Product Roadmap', 'Launch'],
+  },
+  {
+    sector: 'MEP engineering firm',
+    title: 'Engineering data & dashboards',
+    summary:
+      'Normalised scattered engineering and project trackers into clean data and a single dashboard, and restructured the project document server.',
+    tags: ['Data', 'Dashboards', 'Operations'],
   },
 ]
 
@@ -719,7 +1007,6 @@ export const certifications: Certification[] = [
     name: 'GPU Programming Specialization',
     issuer: 'Coursera',
     year: '2024',
-    url: 'https://github.com/Mohit1053/GPU-Programming-Specialization',
   },
 ]
 

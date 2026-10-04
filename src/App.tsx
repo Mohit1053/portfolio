@@ -10,6 +10,8 @@ import { WhyMe } from './components/WhyMe'
 import { Impact } from './components/Impact'
 import { Process } from './components/Process'
 import { Projects } from './components/Projects'
+import { CaseStudy } from './components/CaseStudy'
+import { ClientWork } from './components/ClientWork'
 import { Experience } from './components/Experience'
 import { Testimonials } from './components/Testimonials'
 import { Skills } from './components/Skills'
@@ -43,6 +45,8 @@ export default function App() {
         <Impact />
         <Process />
         <Projects />
+        <CaseStudy />
+        <ClientWork />
         <Experience />
         <Testimonials />
         <Skills />

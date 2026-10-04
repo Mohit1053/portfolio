@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { X, ArrowUpRight, Sparkles } from 'lucide-react'
+import { X, ArrowDown, ArrowUpRight, Sparkles } from 'lucide-react'
 import { FiGithub as Github } from 'react-icons/fi'
 import type { Project } from '../data/content'
 import { categoryIcon } from '../lib/icons'
@@ -44,7 +45,8 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = prevOverflow
       window.clearTimeout(t)
-      prevFocused?.focus?.()
+      // restore focus without jumping the page (the body was scroll-locked, so the card is still in view)
+      prevFocused?.focus?.({ preventScroll: true })
     }
   }, [project, onClose])
 
@@ -146,18 +148,38 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
             {/* footer */}
             {project.links && project.links.length > 0 && (
               <div className="flex shrink-0 flex-wrap gap-3 border-t border-line p-6 sm:p-7">
-                {project.links.map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="inline-flex items-center gap-2 rounded-full border border-line-2 px-4 py-2.5 text-sm font-semibold text-txt transition-colors hover:border-brand/60 hover:bg-surface-2"
-                  >
-                    {l.label === 'GitHub' ? <Github className="h-4 w-4" /> : <ArrowUpRight className="h-4 w-4" />}
-                    {l.label}
-                  </a>
-                ))}
+                {project.links.map((l) => {
+                  // "#section" links stay on the page: close the modal, then scroll to the section
+                  const internal = l.href.startsWith('#')
+                  return (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      {...(internal
+                        ? {
+                            onClick: (e: ReactMouseEvent<HTMLAnchorElement>) => {
+                              e.preventDefault()
+                              onClose()
+                              window.setTimeout(() => {
+                                document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                                history.replaceState(null, '', l.href)
+                              }, 80)
+                            },
+                          }
+                        : { target: '_blank', rel: 'noreferrer noopener' })}
+                      className="inline-flex items-center gap-2 rounded-full border border-line-2 px-4 py-2.5 text-sm font-semibold text-txt transition-colors hover:border-brand/60 hover:bg-surface-2"
+                    >
+                      {l.label === 'GitHub' ? (
+                        <Github className="h-4 w-4" />
+                      ) : internal ? (
+                        <ArrowDown className="h-4 w-4" />
+                      ) : (
+                        <ArrowUpRight className="h-4 w-4" />
+                      )}
+                      {l.label}
+                    </a>
+                  )
+                })}
               </div>
             )}
           </motion.div>

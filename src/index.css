@@ -320,6 +320,7 @@ html[data-theme='light'] {
   /* Darken accent tokens so accent-coloured TEXT meets WCAG AA on the light bg.
      (Gradient CTAs use the theme-invariant .cta-grad, so these don't dull them.) */
   --color-brand: #6d28d9;
+  --color-brand-2: #7c3aed;
   --color-cyan: #0e7490;
   --color-emerald: #047857;
   --color-amber: #b45309;

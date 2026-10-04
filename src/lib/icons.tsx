@@ -21,6 +21,7 @@ import {
   Eye,
   FlaskConical,
   Boxes,
+  Clapperboard,
 } from 'lucide-react'
 
 /** string key (used in content.ts) -> lucide icon component */
@@ -45,6 +46,7 @@ export const iconMap: Record<string, LucideIcon> = {
 export const categoryIcon: Record<string, LucideIcon> = {
   'AI Products': Boxes,
   'Voice AI': MessagesSquare,
+  'Generative Media': Clapperboard,
   'Quant & Finance': LineChart,
   'NLP & RAG': Bot,
   'Computer Vision': Eye,

@@ -16,7 +16,18 @@ test.describe('portfolio — smoke', () => {
 
   test('all primary sections are present', async ({ page }) => {
     await page.goto('/')
-    for (const id of ['about', 'services', 'work', 'experience', 'testimonials', 'skills', 'writing', 'contact']) {
+    for (const id of [
+      'about',
+      'services',
+      'work',
+      'case-study',
+      'clients',
+      'experience',
+      'testimonials',
+      'skills',
+      'writing',
+      'contact',
+    ]) {
       await expect(page.locator(`#${id}`)).toHaveCount(1)
     }
   })
@@ -49,6 +60,35 @@ test.describe('portfolio — smoke', () => {
     await page.goto('/')
     await page.getByRole('button', { name: /^Voice AI/ }).click()
     await expect(page.getByText('details →').first()).toBeVisible()
+  })
+
+  test('show-all expands the project grid and show-fewer collapses it', async ({ page }) => {
+    await page.goto('/')
+    const cards = page.locator('#work').getByText('details →')
+    const before = await cards.count()
+
+    const toggle = page.getByRole('button', { name: /show all \d+ projects/i })
+    const total = Number((await toggle.innerText()).match(/\d+/)?.[0])
+    expect(before).toBeLessThan(total)
+
+    await toggle.click()
+    await expect(cards).toHaveCount(total)
+
+    await page.getByRole('button', { name: /show fewer/i }).click()
+    await expect(cards).toHaveCount(before)
+  })
+
+  test('R2C card links through to the founder case study', async ({ page }) => {
+    await page.goto('/')
+    await page.locator('#work').getByRole('button', { name: /R2C — Research-to-Commercialisation/ }).click()
+
+    const dialog = page.getByRole('dialog')
+    await expect(dialog).toBeVisible()
+    await dialog.getByRole('link', { name: /read the case study/i }).click()
+
+    await expect(dialog).toBeHidden()
+    await expect(page.locator('#case-study')).toBeInViewport()
+    await expect(page).toHaveURL(/#case-study$/)
   })
 
   test('primary nav link scrolls to its section', async ({ page }) => {

@@ -42,6 +42,7 @@ Open it and edit the plain-text values. The layout updates automatically.
 | Change the availability badge text | `profile.availability` |
 | Change hero rotating phrases | `profile.rotatingWords` |
 | Change the 4 big hero numbers | `heroStats` |
+| Update the hero's "currently shipping" console | `currentlyShipping` |
 | Edit the "About" text & quick facts | `about` |
 | Edit the Services / capabilities | `services` |
 | Edit "Why work with me" points | `differentiators` |
@@ -49,6 +50,8 @@ Open it and edit the plain-text values. The layout updates automatically.
 | Edit the process steps | `process` |
 | Add / edit jobs & the founder/agency entry | `experiences` |
 | **Add or edit a project** | `projects` (see below) |
+| Edit the R2C founder case study | `r2cCaseStudy` |
+| Edit anonymised client engagements (or empty to hide) | `clientEngagements` |
 | Edit skills | `skillGroups` |
 | Edit education / certs / leadership | `education`, `certifications`, `leadership` |
 | Edit the FAQ | `faqs` |
@@ -83,7 +86,9 @@ Append an object to the `projects` array in `content.ts`:
 
 Drop project screenshots in `public/` (e.g. `public/shots/`) and reference them with an absolute path (`/shots/name.png`). Omit `image` to keep the clean icon-only card.
 
-Valid `category` values are in `projectCategories` (`AI Products`, `Voice AI`, `Quant & Finance`, `NLP & RAG`, `Computer Vision`, `Automation`, `Research`). Add a new category by adding it to that list **and** giving it an icon in `src/lib/icons.tsx` (`categoryIcon`).
+Valid `category` values are in `projectCategories` (`AI Products`, `Voice AI`, `Generative Media`, `Quant & Finance`, `NLP & RAG`, `Computer Vision`, `Automation`, `Research`). Add a new category by adding it to that list **and** giving it an icon in `src/lib/icons.tsx` (`categoryIcon`).
+
+The grid shows the first 9 projects until a visitor clicks **Show all**, so keep the `projects` array ordered by importance. Only link to **public** repos — a private repo's GitHub link shows visitors a 404.
 
 ---
 
